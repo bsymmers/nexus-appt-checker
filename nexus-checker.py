@@ -17,8 +17,9 @@ def decodeResponse(response) -> list:
     ret_val = []
     for element in response:
         date = pd.to_datetime(element['startTimestamp'])
-        # if not date.weekday():
-        ret_val.append('Nexus appointment available for ' + str(date.day_name()) + ", " + str(date.date()))
+        if not date.weekday():
+            ret_val.append('Nexus appointment available for ' + str(date.day_name()) + ", " + str(date.date()) + " at "
+                            + str(date.time()))
     return ret_val
 def getInfo():
     url = 'https://ttp.cbp.dhs.gov/schedulerapi/slots?orderBy=soonest&limit=1&locationId=5020&minimum=1'
@@ -37,9 +38,8 @@ def getInfo():
                 channel = client.get_channel(int(CHANNEL))
                 await sendMessage(to_send=decoded_response, channel=channel)
                 await asyncio.sleep(100)
-            await asyncio.sleep(20)
+            await asyncio.sleep(10)
        
-        print("Ready!")
         
     client.connect()
     client.run(TOKEN)
