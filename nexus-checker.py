@@ -32,7 +32,6 @@ def getInfo():
     async def on_ready():
         while True:
             response = requests.get(url).json()
-            print(response)
             decoded_response = decodeResponse(response=response)
             if decoded_response != []:
                 channel = client.get_channel(int(CHANNEL))
