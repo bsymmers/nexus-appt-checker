@@ -47,12 +47,12 @@ def getInfo():
             response = requests.get(url)
             try:
                 response_json = response.json()
+                decoded_response = decodeResponse(response=response_json)
             except:
                 print(response.status_code)
                 logger.error("Issue decoding response from API")
                 logger.error(response.headers)
                 logger.error(response.text)
-            decoded_response = decodeResponse(response=response_json)
             if response.status_code == 200 and decoded_response != []:
                 logger.debug("Sending " + str(response_json) )
                 channel = client.get_channel(int(CHANNEL))
