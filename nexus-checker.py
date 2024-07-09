@@ -67,8 +67,9 @@ def getInfo():
             await asyncio.sleep(rand)
 
             current_time = datetime.datetime.now(ZoneInfo("America/Los_Angeles"))
-            if current_time.hour >= 0 and current_time.hour < 7:
-                sys.exit()
+            if current_time.hour >= 2 and current_time.hour < 7:
+                print('Going to sleep')
+                await asyncio.sleep(18000)
 
         
     client.connect()
