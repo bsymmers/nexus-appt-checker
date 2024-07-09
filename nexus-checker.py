@@ -6,6 +6,9 @@ import discord
 import asyncio
 import logging
 import random
+import datetime
+from zoneinfo import ZoneInfo
+import sys
 
 async def sendMessage(to_send, channel):
     for element in to_send:
@@ -62,7 +65,11 @@ def getInfo():
             rand = random.randint(5, 30)
             print(f'Sleeping for {rand} seconds')
             await asyncio.sleep(rand)
-       
+
+            current_time = datetime.datetime.now(ZoneInfo("America/Los_Angeles"))
+            if current_time.hour >= 0 and current_time.hour < 7:
+                sys.exit()
+
         
     client.connect()
     client.run(TOKEN)
