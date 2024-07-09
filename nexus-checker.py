@@ -53,7 +53,7 @@ def getInfo():
                 logger.error(response.headers)
                 logger.error(response.text)
             decoded_response = decodeResponse(response=response_json)
-            if decoded_response != []:
+            if response.status_code == 200 and decoded_response != []:
                 logger.debug("Sending " + str(response_json) )
                 channel = client.get_channel(int(CHANNEL))
                 await sendMessage(to_send=decoded_response, channel=channel)
