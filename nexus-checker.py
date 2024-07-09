@@ -23,7 +23,7 @@ def decodeResponse(response) -> list:
                             + str(date.time()))
     return ret_val
 def getInfo():
-    url = 'https://ttp.cbp.dhs.gov/schedulerapi/slots?orderBy=soonest&limit=1&locationId=5223&minimum=1'
+    url = 'https://ttp.cbp.dhs.gov/schedulerapi/slots?orderBy=soonest&limit=1&locationId=5020&minimum=1'
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
     CHANNEL = os.getenv('DISCORD_CHANNEL')
@@ -54,6 +54,7 @@ def getInfo():
                 logger.error(response.text)
             decoded_response = decodeResponse(response=response_json)
             if decoded_response != []:
+                logger.debug("Sending " + str(response_json) )
                 channel = client.get_channel(int(CHANNEL))
                 await sendMessage(to_send=decoded_response, channel=channel)
                 await asyncio.sleep(58)
