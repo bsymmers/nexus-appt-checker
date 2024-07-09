@@ -59,7 +59,9 @@ def getInfo():
                 channel = client.get_channel(int(CHANNEL))
                 await sendMessage(to_send=decoded_response, channel=channel)
                 await asyncio.sleep(58)
-            await asyncio.sleep(3)
+            rand = random.randint(5, 30)
+            print(f'Sleeping for {rand} seconds')
+            await asyncio.sleep(rand)
        
         
     client.connect()
