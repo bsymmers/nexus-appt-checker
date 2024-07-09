@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import discord
 import asyncio
 import logging
+import random
 
 async def sendMessage(to_send, channel):
     for element in to_send:
@@ -50,9 +51,9 @@ def getInfo():
                 decoded_response = decodeResponse(response=response_json)
             except:
                 print(response.status_code)
-                logger.error("Issue decoding response from API")
-                logger.error(response.headers)
-                logger.error(response.text)
+                logger.debug("Issue decoding response from API")
+                logger.debug(response.headers)
+                logger.debug(response.text)
             if response.status_code == 200 and decoded_response != []:
                 logger.debug("Sending " + str(response_json) )
                 channel = client.get_channel(int(CHANNEL))
