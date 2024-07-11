@@ -57,6 +57,8 @@ def getInfo():
                 logger.debug("Issue decoding response from API")
                 logger.debug(response.headers)
                 logger.debug(response.text)
+                channel = client.get_channel(int(CHANNEL))
+                await sendMessage(to_send=["BRANDON FIX BOT"], channel=channel)
             if response.status_code == 200 and decoded_response != []:
                 logger.debug("Sending " + str(response_json) )
                 channel = client.get_channel(int(CHANNEL))
