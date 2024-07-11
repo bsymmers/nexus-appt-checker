@@ -64,7 +64,7 @@ def getInfo():
                 channel = client.get_channel(int(CHANNEL))
                 await sendMessage(to_send=decoded_response, channel=channel)
                 await asyncio.sleep(20)
-            rand = random.randint(3, 10)
+            rand = random.randint(3, 5)
             print(f'Sleeping for {rand} seconds')
             await asyncio.sleep(rand)
 
