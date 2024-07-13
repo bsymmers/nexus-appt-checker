@@ -42,7 +42,7 @@ def get_info():
     Main function that calls helpers to faciliate
     get request to scheduler API & the sending of the notification
     '''
-    url = 'https://ttp.cbp.dhs.gov/schedulerapi/slots?orderBy=soonest&limit=1&locationId=5223&minimum=1'
+    url = 'https://ttp.cbp.dhs.gov/schedulerapi/slots?orderBy=soonest&limit=1&locationId=5020&minimum=1'
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
     CHANNEL = os.getenv('DISCORD_CHANNEL')
