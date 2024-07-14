@@ -66,7 +66,7 @@ def get_info():
             try:
                 response_json = response.json()
                 decoded_response = decode_response(response=response_json)
-            except requests.exceptions.JSONDecodeError:
+            except:
                 print(response.status_code)
                 logger.debug("Issue decoding response from API")
                 logger.debug(response.headers)
