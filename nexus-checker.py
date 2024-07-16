@@ -87,7 +87,7 @@ def get_info():
                 ZoneInfo("America/Los_Angeles"))
             if current_time.hour >= 0 and current_time.hour < 7:
                 print('Going to sleep')
-                await asyncio.sleep(18000)
+                await asyncio.sleep(25200)
 
     client.connect()
     client.run(TOKEN)
